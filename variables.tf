@@ -6,10 +6,10 @@
   }
   variable "aws_region" {
     type = string
+    default = "us-east-1"
   }
-  variable "endpoints" {
-    type = string
-  }
+
   variable "s3_bucket_name" {
     type = string
+    default = "b"
   }

@@ -1,3 +1,5 @@
-lambda/
 *.tfvars
 *.auto.tfvars
+.terraform
+.terraform*
+app.zip

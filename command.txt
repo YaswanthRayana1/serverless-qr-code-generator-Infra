@@ -1,1 +1,10 @@
 http://localhost:4566
+
+aws lambda invoke --region=us-east-1 --function-name=qr-code-generator output.txt
+
+
+
+
+code-s3-name: codeLambdaS3bucket15102023
+data-s3-name: dataLambdaS3bucket15102023
+dynamodb-name: 

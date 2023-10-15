@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  localstack:
+    container_name: localstack-main
+    image: localstack/localstack:latest
+    hostname: awslocal
+    ports:
+      - "4566:4566"
+      - "8055:8080"
+    environment:
+      - SERVICES=${SERVICES-acm,apigateway
+          ,cloudformation,cloudwatch
+          ,dynamodb,dynamodbstreams,ec2,es,events
+          ,firehose,iam,kinesis,kms,lambda,rds
+          ,route53,s3,s3api,secretsmanager,ses,sns
+          ,sqs,ssm,stepfunctions,sts}
+      - DEBUG=${DEBUG- }
+      - LAMBDA_EXECUTOR=${LAMBDA_EXECUTOR-docker}
+      - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY-0}
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - DATA_DIR=/tmp/localstack/data
+      - HOST_TMP_FOLDER=$HOME/localstack/tmp
+      - TMPDIR=/tmp/localstack/tmp
+      - LAMBDA_REMOTE_DOCKER=false
+      - HOSTNAME_EXTERNAL=awslocal
+    volumes:
+      - $HOME/localstack/data:/tmp/localstack/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "$HOME/localstack/tmp:/tmp/localstack/tmp"
