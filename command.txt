@@ -5,6 +5,6 @@ aws lambda invoke --region=us-east-1 --function-name=qr-code-generator output.tx
 
 
 
-code-s3-name: codeLambdaS3bucket15102023
-data-s3-name: dataLambdaS3bucket15102023
+code-s3-name: codelambdas3bucket15102023
+data-s3-name: datalambdas3bucket15102023
 dynamodb-name: 

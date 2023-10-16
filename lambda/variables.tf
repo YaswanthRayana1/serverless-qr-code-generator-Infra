@@ -18,7 +18,14 @@ variable "data_s3_bucket_name" {
 variable "user_table_name" {
   type = string
 }
+variable "product_table_name" {
+  type = string
+}
 # variable "lambda_s3_bucket" {
 #   type = string
   
 # }
+variable "lambda_function_name" {
+  type = string
+  default = "qr-code-generator"
+}

@@ -1,24 +1,34 @@
 resource "aws_dynamodb_table" "user" {
-  name           = var.user_table_name
+  name           = "User"
   billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = var.user_hash_key
-  
+  hash_key       = "email"
   attribute {
-    name = var.user_hash_key
+    name = "email"
     type = "S" 
   }
   
-  tags = var.user_tag
+  tags = {
+    "info" = "user table"
+  }
 }
-resource "aws_dynamodb_table" "product" {
-  name           = var.user_table_name
+resource "aws_dynamodb_table" "products" {
+  name           = "Product"
   billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = var.user_hash_key
-  
+  hash_key       = "url"
+
   attribute {
-    name = var.user_hash_key
-    type = "S" 
+    name = "url"
+    type = "S"
   }
-  
-  tags = var.user_tag
+
+  attribute {
+    name = "email"
+    type = "S"
+  }
+
+  global_secondary_index {
+    name               = "user_email-index"
+    hash_key           = "email"
+    projection_type    = "ALL"
+  }
 }
